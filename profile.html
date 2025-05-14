@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil | STELLAR</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">STELLAR</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="td1.html">TD1</a></li>
+                <li><a href="resources.html">Ressources</a></li>
+                <li><a href="profile.html" class="active">Profil</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="profile-container">
+        <section class="profile-header">
+            <div class="container">
+                <div class="profile-card">
+                    <div class="profile-avatar"></div>
+                    <div class="profile-info">
+                        <h1>Profil Astronaute</h1>
+                        <p class="profile-subtitle">Apprenti en Machine Learning</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="profile-stats">
+            <div class="container">
+                <h2>Progression</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">1</div>
+                        <div class="stat-label">TD Complété</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Étapes Terminées</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">3/3</div>
+                        <div class="stat-label">Quiz Réussi</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="profile-progress">
+            <div class="container">
+                <h2>Progression des TDs</h2>
+                <div class="progress-cards">
+                    <div class="progress-card completed">
+                        <div class="progress-header">
+                            <h3>TD1: Prédiction des Tempêtes</h3>
+                            <div class="progress-badge">Complété</div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 100%;"></div>
+                        </div>
+                        <div class="progress-details">
+                            <p>8/8 étapes terminées</p>
+                            <a href="td1.html" class="review-link">Revoir</a>
+                        </div>
+                    </div>
+                    <div class="progress-card locked">
+                        <div class="progress-header">
+                            <h3>TD2: Classification des Exoplanètes</h3>
+                            <div class="progress-badge locked">Verrouillé</div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 0%;"></div>
+                        </div>
+                        <div class="progress-details">
+                            <p>0/8 étapes terminées</p>
+                            <span class="locked-message">Terminez le TD1 pour débloquer</span>
+                        </div>
+                    </div>
+                    <div class="progress-card locked">
+                        <div class="progress-header">
+                            <h3>TD3: Analyse des Signaux Spatiaux</h3>
+                            <div class="progress-badge locked">Verrouillé</div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 0%;"></div>
+                        </div>
+                        <div class="progress-details">
+                            <p>0/8 étapes terminées</p>
+                            <span class="locked-message">Terminez le TD2 pour débloquer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="profile-achievements">
+            <div class="container">
+                <h2>Badges obtenus</h2>
+                <div class="achievements-grid">
+                    <div class="achievement-card">
+                        <div class="achievement-icon explorer"></div>
+                        <h3>Explorateur</h3>
+                        <p>Vous avez terminé votre première mission</p>
+                    </div>
+                    <div class="achievement-card">
+                        <div class="achievement-icon data-scientist"></div>
+                        <h3>Data Scientist</h3>
+                        <p>Vous avez réussi à prédire les tempêtes</p>
+                    </div>
+                    <div class="achievement-card locked">
+                        <div class="achievement-icon locked"></div>
+                        <h3>???</h3>
+                        <p>Continuez votre progression pour débloquer</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">STELLAR</div>
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="td1.html">TD1</a></li>
+                        <li><a href="resources.html">Ressources</a></li>
+                        <li><a href="profile.html">Profil</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Ressources</h4>
+                    <ul>
+                        <li><a href="https://scikit-learn.org/" target="_blank">Scikit-learn</a></li>
+                        <li><a href="https://pandas.pydata.org/" target="_blank">Pandas</a></li>
+                        <li><a href="https://numpy.org/" target="_blank">NumPy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 STELLAR. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

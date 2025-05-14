@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TD1 - Prédiction des Tempêtes | STELLAR</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="tutorial-page">
+    <header>
+        <nav>
+            <div class="logo">STELLAR</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="td1.html" class="active">TD1</a></li>
+                <li><a href="resources.html">Ressources</a></li>
+                <li><a href="profile.html">Profil</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="tutorial-container">
+        <aside class="sidebar">
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress" id="progress-indicator"></div>
+                </div>
+                <div class="progress-text">Progression: <span id="progress-percentage">0%</span></div>
+            </div>
+            <ul class="tutorial-nav">
+                <li><a href="#mission" class="active" data-step="1">Mission</a></li>
+                <li><a href="#exploration" data-step="2">Exploration des données</a></li>
+                <li><a href="#preparation" data-step="3">Préparation des données</a></li>
+                <li><a href="#normalisation" data-step="4">Normalisation</a></li>
+                <li><a href="#test-modeles" data-step="5">Test des modèles</a></li>
+                <li><a href="#prediction" data-step="6">Prédiction</a></li>
+                <li><a href="#planete-ideale" data-step="7">Planète idéale</a></li>
+                <li><a href="#quiz" data-step="8">Quiz</a></li>
+            </ul>
+        </aside>
+
+        <main class="tutorial-content">
+            <section id="mission" class="tutorial-section active">
+                <h1>Prédiction des Tempêtes sur les Planètes</h1>
+                <div class="mission-brief">
+                    <h2>Contexte de la Mission</h2>
+                    <div class="mission-card">
+                        <p>L'astronaute Nova voyage à travers l'espace avec son IA de bord, ORION. Après une panne de son vaisseau, Nova doit atterrir en urgence sur une planète sécurisée.</p>
+                        <p>Mais attention ⚠️ : certaines planètes sont sujettes à de violentes tempêtes qui pourraient compromettre l'atterrissage !</p>
+                    </div>
+
+                    <div class="nova-says">
+                        <div class="nova-icon"></div>
+                        <div class="nova-message">
+                            <h4>Nova dit :</h4>
+                            <p>Notre vaisseau est endommagé et nous devons atterrir rapidement. ORION, peux-tu m'aider à trouver une planète sans tempête ?</p>
+                        </div>
+                    </div>
+
+                    <div class="orion-advises">
+                        <div class="orion-icon"></div>
+                        <div class="orion-message">
+                            <h4>ORION conseille :</h4>
+                            <p>J'ai des données sur plusieurs planètes, mais je dois utiliser le Machine Learning pour prédire lesquelles sont sûres. Commençons par explorer ces données.</p>
+                        </div>
+                    </div>
+
+                    <h3>Objectif</h3>
+                    <p>Aide Nova et ORION à trouver la planète la plus sûre en utilisant un Arbre de Décision et d'autres modèles de Machine Learning !</p>
+
+                    <h3>Prérequis pour ce TD</h3>
+                    <div class="prerequisites">
+                        <div class="prerequisite">
+                            <h4>Compétences en Python</h4>
+                            <ul>
+                                <li>Boucles et structures de contrôle (for, if, while)</li>
+                                <li>Compréhension des fonctions et des dictionnaires</li>
+                            </ul>
+                        </div>
+                        <div class="prerequisite">
+                            <h4>Notions en Machine Learning</h4>
+                            <ul>
+                                <li>Concept de modèle d'apprentissage supervisé</li>
+                                <li>Comprendre l'entraînement et le test</li>
+                            </ul>
+                        </div>
+                        <div class="prerequisite">
+                            <h4>Bibliothèques Python utilisées</h4>
+                            <ul>
+                                <li>scikit-learn : pour entraîner et évaluer les modèles</li>
+                                <li>pandas : pour structurer et analyser les données</li>
+                                <li>numpy : pour les calculs mathématiques</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="navigation-buttons">
+                        <button class="next-button" data-next="exploration">Étape suivante</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="exploration" class="tutorial-section">
+                <h2>1ère étape : Exploration des données</h2>
+                <p>ORION dispose d'un fichier Excel contenant des données sur les planètes :</p>
+                <ul>
+                    <li>Planète (nom de la planète)</li>
+                    <li>Température, Nuage, Vent, Pluie, Humidité (caractéristiques météorologiques)</li>
+                    <li>Tempête (Oui/Non)</li>
+                </ul>
+
+                <div class="orion-advises">
+                    <div class="orion-icon"></div>
+                    <div class="orion-message">
+                        <h4>ORION conseille :</h4>
+                        <p>Commençons par importer les données et les explorer pour comprendre leur structure.</p>
+                    </div>
+                </div>
+
+                <div class="code-editor">
+                    <div class="code-header">
+                        <span>Python Code</span>
+                        <button class="run-button">Exécuter</button>
+                    </div>
+                    <div class="code-area">
+                        <pre><code class="python-code"># Ta mission : Importer et explorer ces données :)
+import numpy as np
+import pandas as pd
+import warnings
+warnings.filterwarnings('ignore')
+df = pd.read_excel("Jeu de données Planètes.xlsx", header=0)
+df.head()</code></pre>
+                    </div>
+                    <div class="code-output">
+                        <div class="output-header">Résultat :</div>
+                        <div class="output-content">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Planète</th>
+                                        <th>Température</th>
+                                        <th>Nuage</th>
+                                        <th>Vent</th>
+                                        <th>Pluie</th>
+                                        <th>Humidité</th>
+                                        <th>Tempête</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>0</td>
+                                        <td>Kepler-22b</td>
+                                        <td>25.3</td>
+                                        <td>45</td>
+                                        <td>12</td>
+                                        <td>20</td>
+                                        <td>65</td>
+                                        <td>non</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Proxima b</td>
+                                        <td>32.1</td>
+                                        <td>80</td>
+                                        <td>35</td>
+                                        <td>60</td>
+                                        <td>85</td>
+                                        <td>oui</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>TRAPPIST-1e</td>
+                                        <td>18.7</td>
+                                        <td>30</td>
+                                        <td>8</td>
+                                        <td>15</td>
+                                        <td>50</td>
+                                        <td>non</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>K2-18b</td>
+                                        <td>28.9</td>
+                                        <td>65</td>
+                                        <td>25</td>
+                                        <td>45</td>
+                                        <td>75</td>
+                                        <td>oui</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>TOI-700d</td>
+                                        <td>22.5</td>
+                                        <td>40</td>
+                                        <td>15</td>
+                                        <td>25</td>
+                                        <td>60</td>
+                                        <td>non</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h4>À Retenir :</h4>
+                    <ul>
+                        <li>Qu'est-ce qu'un dataset ? Un ensemble de données structuré utilisé pour entraîner un modèle.</li>
+                        <li>Le dataset contient des caractéristiques météorologiques et une variable cible (Tempête).</li>
+                        <li>L'analyse exploratoire permet de comprendre la structure des données avant de les utiliser.</li>
+                    </ul>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="prev-button" data-prev="mission">Étape précédente</button>
+                    <button class="next-button" data-next="preparation">Étape suivante</button>
+                </div>
+            </section>
+
+            <section id="preparation" class="tutorial-section">
+                <h2>2ème étape : Préparation des données</h2>
+                <p>ORION doit préparer les données pour entraîner ses modèles.</p>
+                <p>Actions :</p>
+                <ul>
+                    <li>Supprime la colonne "Planète" car elle ne sert pas à la prédiction.</li>
+                    <li>Sépare les caractéristiques (X) et la cible (Y = "Tempête").</li>
+                </ul>
+
+                <div class="nova-says">
+                    <div class="nova-icon"></div>
+                    <div class="nova-message">
+                        <h4>Nova dit :</h4>
+                        <p>ORION, pourquoi devons-nous séparer les données ?</p>
+                    </div>
+                </div>
+
+                <div class="orion-advises">
+                    <div class="orion-icon"></div>
+                    <div class="orion-message">
+                        <h4>ORION conseille :</h4>
+                        <p>Nous séparons les données en caractéristiques (ce que nous observons) et cible (ce que nous voulons prédire). Ensuite, nous divisons en jeu d'entraînement et jeu de test pour évaluer notre modèle.</p>
+                    </div>
+                </div>
+
+                <div class="code-editor">
+                    <div class="code-header">
+                        <span>Python Code</span>
+                        <button class="run-button">Exécuter</button>
+                    </div>
+                    <div class="code-area">
+                        <pre><code class="python-code">X_df = df.drop(columns=["Planète", "Tempête"])
+Y_df = df["Tempête"]
+
+# Divise les données en un ensemble d'entraînement et de test.
+from sklearn.model_selection import train_test_split
+Xtrain, Xtest, Ytrain, Ytest = train_test_split(X_df, Y_df, test_size=0.2, stratify=Y_df, random_state=1)</code></pre>
+                    </div>
+                    <div class="code-output">
+                        <div class="output-header">Résultat :</div>
+                        <div class="output-content">
+                            <p>Données divisées avec succès :</p>
+                            <ul>
+                                <li>Xtrain : 80% des caractéristiques pour l'entraînement</li>
+                                <li>Xtest : 20% des caractéristiques pour le test</li>
+                                <li>Ytrain : 80% des cibles pour l'entraînement</li>
+                                <li>Ytest : 20% des cibles pour le test</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h4>À Retenir :</h4>
+                    <ul>
+                        <li>On divise les données en jeu d'entraînement (80%) et jeu de test (20%) pour évaluer le modèle.</li>
+                        <li>L'option stratify=Y_df permet de garder la proportion de classes et éviter un dataset déséquilibré.</li>
+                        <li>Séparer les données évite que le modèle apprenne par cœur et améliore la généralisation.</li>
+                    </ul>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="prev-button" data-prev="exploration">Étape précédente</button>
+                    <button class="next-button" data-next="normalisation">Étape suivante</button>
+                </div>
+            </section>
+
+            <section id="normalisation" class="tutorial-section">
+                <h2>3ème étape : Normalisation et Réduction de Dimension</h2>
+                <p>ORION veut optimiser les performances du modèle.</p>
+
+                <div class="orion-advises">
+                    <div class="orion-icon"></div>
+                    <div class="orion-message">
+                        <h4>ORION conseille :</h4>
+                        <p>La normalisation est cruciale car nos variables ont des échelles différentes. Par exemple, la température est en degrés tandis que l'humidité est en pourcentage.</p>
+                    </div>
+                </div>
+
+                <div class="code-editor">
+                    <div class="code-header">
+                        <span>Python Code - Normalisation</span>
+                        <button class="run-button">Exécuter</button>
+                    </div>
+                    <div class="code-area">
+                        <pre><code class="python-code"># Normalisation des données
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+Xtrain_scaled = scaler.fit_transform(Xtrain)
+Xtest_scaled = scaler.transform(Xtest)</code></pre>
+                    </div>
+                    <div class="code-output">
+                        <div class="output-header">Résultat :</div>
+                        <div class="output-content">
+                            <p>Données normalisées avec succès.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-editor">
+                    <div class="code-header">
+                        <span>Python Code - Réduction de dimension</span>
+                        <button class="run-button">Exécuter</button>
+                    </div>
+                    <div class="code-area">
+                        <pre><code class="python-code"># Réduction de dimension avec l'ACP (Analyse en Composantes Principales)
+from sklearn.decomposition import PCA
+pca = PCA(n_components=3)
+Xtrain_pca = pca.fit_transform(Xtrain_scaled)
+Xtest_pca = pca.transform(Xtest_scaled)
+
+# Concatène les nouvelles données pour enrichir l'apprentissage
+Xtrain_new = np.concatenate((Xtrain_scaled, Xtrain_pca), axis=1)
+Xtest_new = np.concatenate((Xtest_scaled, Xtest_pca), axis=1)</code></pre>
+                    </div>
+                    <div class="code-output">
+                        <div class="output-header">Résultat :</div>
+                        <div class="output-content">
+                            <p>Réduction de dimension effectuée avec succès.</p>
+                            <p>Variance expliquée par les 3 composantes principales : 95.2%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h4>À Retenir :</h4>
+                    <ul>
+                        <li>La normalisation (StandardScaler) met les variables sur une échelle commune pour éviter qu'une variable ne domine les autres.</li>
+                        <li>L'ACP (Analyse en Composantes Principales) permet de réduire la dimension tout en gardant l'essentiel des informations.</li>
+                        <li>Réduire la dimension permet de limiter le bruit, éviter le surapprentissage et améliorer l'efficacité du modèle.</li>
+                    </ul>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="prev-button" data-prev="preparation">Étape précédente</button>
+                    <button class="next-button" data-next="test-modeles">Étape suivante</button>
+                </div>
+            </section>
+
+            <section id="test-modeles" class="tutorial-section">
+                <h2>4ème étape : Test des modèles</h2>
+                <p>ORION veut tester plusieurs modèles ML pour voir lequel prédit le mieux les tempêtes.</p>
+                <p>Modèles utilisés :</p>
+                <ul>
+                    <li>CART (Arbre de Décision)</li>
+                    <li>ID3 (Arbre basé sur l'entropie)</li>
+                    <li>KNN (k-Nearest Neighbors)</li>
+                    <li>Réseau de Neurones</li>
+                </ul>
+
+                <div class="nova-says">
+                    <div class="nova-icon"></div>
+                    <div class="nova-message">
+                        <h4>Nova dit :</h4>
+                        <p>Pourquoi tester plusieurs modèles ? N'y en a-t-il pas un qui est toujours meilleur ?</p>
+                    </div>
+                </div>
+
+                <div class="orion-advises">
+                    <div class="orion-icon"></div>
+                    <div class="orion-message">
+                        <h4>ORION conseille :</h4>
+                        <p>Chaque modèle a ses forces et faiblesses. Certains sont meilleurs pour des données linéaires, d'autres pour des relations complexes. Il n'existe pas de modèle parfait pour tous les problèmes.</p>
+                    </div>
+                </div>
+
+                <div class="code-editor">
+                    <div class="code-header">
+                        <span>Python Code - Définition des modèles</span>
+                        <button class="run-button">Exécuter</button>
+                    </div>
+                    <div class="code-area">
+                        <pre><code class="python-code">from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.neural_network import MLPClassifier
+from sklearn.metrics import accuracy_score, precision_score, recall_score
+
+models = {
+    'CART': DecisionTreeClassifier(random_state=1),
+    'ID3': DecisionTreeClassifier(criterion='entropy', random_state=1),
+    'KNN': KNeighborsClassifier(n_neighbors=5),
+    'Neural Network': MLPClassifier(hidden_layer_sizes=(40, 20), random_state=1)
+}</code></pre>
+                    </div>
+                    <div class="code-output">
+                        <div class="output-header">Résultat :</div>
+                        <div class="output-content">
+                            <p>Modèles définis avec succès.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h4>À Retenir :</h4>
+                    <ul>
+                        <li>Différents modèles ont des comportements variés :</li>
+                        <li>Arbre de Décision : Simple et interprétable, mais risque de surapprentissage.</li>
+                        <li>KNN : Performant sur petits datasets mais devient lent si les données sont nombreuses.</li>
+                        <li>Réseau de Neurones : Très puissant mais nécessite plus de données et de réglages.</li>
+                    </ul>
+                </div>
+
+                <div class="code-editor">
+                    <div class="code-header">
+                        <span>Python Code - Évaluation des modèles</span>
+                        <button class="run-button">Exécuter</button>
+                    </div>
+                    <div class="code-area">
+                        <pre><code class="python-code">results = {'Model': [], 'Accuracy': [], 'Precision': [], 'Recall': [], 'Data': []}
+
+for name, model in models.items():
+    model.fit(Xtrain_new, Ytrain)
+    y_pred = model.predict(Xtest_new)
+    accuracy = accuracy_score(Ytest, y_pred)
+    precision = precision_score(Ytest, y_pred, average='weighted')
+    recall = recall_score(Ytest, y_pred, average='weighted')
+    results['Data'].append(model)
+    results['Model'].append(name)
+    results['Accuracy'].append(accuracy)
+    results['Precision'].append(precision)
+    results['Recall'].append(recall)
+
+# Pour afficher les résultats
+results_df = pd.DataFrame(results)
+print(results_df[['Model', 'Accuracy', 'Precision', 'Recall']])</code></pre>
+                    </div>
+                    <div class="code-output">
+                        <div class="output-header">Résultat :</div>
+                        <div class="output-content">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Model</th>
+                                        <th>Accuracy</th>
+                                        <th>Precision</th>
+                                        <th>Recall</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>CART</td>
+                                        <td>0.92</td>
+                                        <td>0.91</td>
+                                        <td>0.92</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ID3</td>
+                                        <td>0.89</td>
+                                        <td>0.88</td>
+                                        <td>0.89</td>
+                                    </tr>
+                                    <tr>
+                                        <td>KNN</td>
+                                        <td>0.85</td>
+                                        <td>0.84</td>
+                                        <td>0.85</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Neural Network</td>
+                                        <td>0.94</td>
+                                        <td>0.93</td>
+                                        <td>0.94</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h4>Analyse du Code : Test des Modèles</h4>
+                    <h5>Décomposition du Code</h5>
+                    <p>Ce code a pour objectif de tester plusieurs modèles de machine learning et de comparer leurs performances à l'aide de trois métriques principales :</p>
+                    <ol>
+                        <li>Accuracy (Précision globale) : Pourcentage de bonnes prédictions.</li>
+                        <li>Precision (Précision par classe) : Fiabilité des prédictions positives.</li>
+                        <li>Recall (Rappel par classe) : Capacité à détecter toutes les instances positives.</li>
+                    </ol>
+                    <p>Le code suit ces étapes :</p>
+                    <ul>
+                        <li>✅ Initialisation des résultats : Un dictionnaire results est créé pour stocker les scores de chaque modèle.</li>
+                        <li>✅ Entraînement et Prédiction : Une boucle parcourt tous les modèles définis dans models.items().</li>
+                        <li>✅ Évaluation des Modèles : Les scores accuracy_score, precision_score et recall_score sont calculés.</li>
+                        <li>✅ Stockage des Résultats : Chaque score est ajouté à la liste results.</li>
+                        <li>✅ Affichage des Résultats : Un DataFrame est créé et affiché pour comparer les modèles facilement.</li>
+                    </ul>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="prev-button" data-prev="normalisation">Étape précédente</button>
+                    <button class="next-button" data-next="prediction">Étape suivante</button>
+                </div>
+            </section>
+
+            <section id="prediction" class="tutorial-section">
+                <h2>5ème étape : Prédiction des Tempêtes</h2>
+                <p>ORION sélectionne le meilleur modèle et l'utilise pour prédire la météo des planètes inconnues.</p>
+
+                <div class="code-editor">
+                    <div class="code-header">
+                        <span>Python Code</span>
+                        <button class="run-button">Exécuter</button>
+                    </div>
+                    <div class="code-area">
+                        <pre><code class="python-code">best_model = results_df.loc[results_df['Accuracy'].idxmax(), 'Data']
+
+# Affichage de l'arbre de décision (si c'est un modèle CART ou ID3)
+from sklearn.tree import plot_tree
+import matplotlib.pyplot as plt
+
+if isinstance(best_model, DecisionTreeClassifier):
+    # Afficher l'arbre de décision
+    plt.figure(figsize=(20, 10))
+    plot_tree(best_model, feature_names=list(df.drop(columns=['Planète', 'Tempête']).columns) + [f'PCA{i+1}' for i in range(3)],
+              class_names=best_model.classes_, filled=True, rounded=True)
+    plt.title("Arbre de décision - Meilleur modèle")
+    plt.show()</code></pre>
+                    </div>
+                    <div class="code-output">
+                        <div class="output-header">Résultat :</div>
+                        <div class="output-content">
+                            <p>Meilleur modèle sélectionné : Neural Network (Accuracy: 0.94)</p>
+                            <div class="decision-tree-image">
+                                <img src="assets/decision-tree.png" alt="Arbre de décision" class="responsive-image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h4>À Retenir :</h4>
+                    <ul>
+                        <li>Le meilleur modèle est celui qui a un bon équilibre entre précision et recall, pour éviter les faux positifs/négatifs.</li>
+                    </ul>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="prev-button" data-prev="test-modeles">Étape précédente</button>
+                    <button class="next-button" data-next="planete-ideale">Étape suivante</button>
+                </div>
+            </section>
+
+            <section id="planete-ideale" class="tutorial-section">
+                <h2>6ème étape : Trouver la planète idéale !</h2>
+                <p>ORION prédit les tempêtes sur toutes les planètes pour trouver où atterrir !</p>
+
+                <div class="nova-says">
+                    <div class="nova-icon"></div>
+                    <div class="nova-message">
+                        <h4>Nova dit :</h4>
+                        <p>ORION, nous avons peu de temps ! Utilise le modèle pour me dire où atterrir !</p>
+                    </div>
+                </div>
+
+                <div class="code-editor">
+                    <div class="code-header">
+                        <span>Python Code</span>
+                        <button class="run-button">Exécuter</button>
+                    </div>
+                    <div class="code-area">
+                        <pre><code class="python-code">X_full_scaled = scaler.transform(X_df)
+X_full_pca = pca.transform(X_full_scaled)
+X_full_new = np.concatenate((X_full_scaled, X_full_pca), axis=1)
+predictions = best_model.predict(X_full_new)
+df['Prédiction Tempête'] = predictions
+planetes_sures = df[df['Prédiction Tempête'] == 'non']
+planetes_sures_list = planetes_sures['Planète'].tolist()
+print("Planètes sûres pour l'atterrissage :", planetes_sures_list)</code></pre>
+                    </div>
+                    <div class="code-output">
+                        <div class="output-header">Résultat :</div>
+                        <div class="output-content">
+                            <p>Planètes sûres pour l'atterrissage : ['Kepler-22b', 'TRAPPIST-1e', 'TOI-700d', 'LHS 1140b', 'Gliese 667Cc']</p>
+                            <div class="planet-visualization">
+                                <div class="planet kepler"></div>
+                                <div class="planet trappist"></div>
+                                <div class="planet toi"></div>
+                                <div class="planet lhs"></div>
+                                <div class="planet gliese"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="orion-advises">
+                    <div class="orion-icon"></div>
+                    <div class="orion-message">
+                        <h4>ORION conseille :</h4>
+                        <p>D'après notre modèle, je recommande d'atterrir sur Kepler-22b. C'est la planète la plus proche et elle présente des conditions météorologiques stables.</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h4>À Retenir :</h4>
+                    <ul>
+                        <li>Un arbre de décision permet de visualiser les critères utilisés pour prédire une tempête.</li>
+                        <li>On applique le modèle final sur toutes les planètes pour identifier celles où l'atterrissage est sûr.</li>
+                        <li>Si le modèle n'est pas performant, il peut être amélioré avec:
+                            <ul>
+                                <li>Ajout de nouvelles features (exemple : pression atmosphérique).</li>
+                                <li>Utilisation d'un modèle plus complexe (ex : Random Forest).</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="prev-button" data-prev="prediction">Étape précédente</button>
+                    <button class="next-button" data-next="quiz">Étape suivante</button>
+                </div>
+            </section>
+
+            <section id="quiz" class="tutorial-section">
+                <h2>Fin de la Mission STELLAR : Prédiction des Tempêtes sur les Planètes</h2>
+                <div class="mission-complete">
+                    <h3>🎉 Félicitations, tu as aidé Nova à trouver une planète sans tempête !</h3>
+                    <div class="mission-image">
+                        <div class="landing-image"></div>
+                    </div>
+                </div>
+
+                <div class="quiz-container">
+                    <h3>Questions Bonus</h3>
+                    <form id="quiz-form">
+                        <div class="quiz-question">
+                            <p>1. Pourquoi normaliser les données avant de les utiliser ?</p>
+                            <div class="quiz-options">
+                                <label>
+                                    <input type="radio" name="q1" value="a">
+                                    Pour accélérer l'entraînement du modèle
+                                </label>
+                                <label>
+                                    <input type="radio" name="q1" value="b">
+                                    Pour mettre les variables sur une échelle commune et éviter qu'une variable ne domine les autres
+                                </label>
+                                <label>
+                                    <input type="radio" name="q1" value="c">
+                                    Pour réduire le nombre de variables
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <p>2. Quel modèle semble le plus performant et pourquoi ?</p>
+                            <div class="quiz-options">
+                                <label>
+                                    <input type="radio" name="q2" value="a">
+                                    Le réseau de neurones, car il a la meilleure précision
+                                </label>
+                                <label>
+                                    <input type="radio" name="q2" value="b">
+                                    L'arbre de décision, car il est plus interprétable
+                                </label>
+                                <label>
+                                    <input type="radio" name="q2" value="c">
+                                    KNN, car il est plus simple
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <p>3. Comment pourrait-on améliorer la prédiction ?</p>
+                            <div class="quiz-options">
+                                <label>
+                                    <input type="radio" name="q3" value="a">
+                                    En utilisant uniquement l'ACP sans les variables originales
+                                </label>
+                                <label>
+                                    <input type="radio" name="q3" value="b">
+                                    En collectant plus de données et en ajoutant de nouvelles caractéristiques pertinentes
+                                </label>
+                                <label>
+                                    <input type="radio" name="q3" value="c">
+                                    En supprimant la normalisation des données
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-quiz">Valider mes réponses</button>
+                    </form>
+                    <div id="quiz-results" class="hidden">
+                        <h3>Résultats</h3>
+                        <p>Score : <span id="quiz-score">0</span>/3</p>
+                        <div id="quiz-feedback"></div>
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="prev-button" data-prev="planete-ideale">Étape précédente</button>
+                    <a href="index.html" class="home-button">Retour à l'accueil</a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">STELLAR</div>
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="td1.html">TD1</a></li>
+                        <li><a href="resources.html">Ressources</a></li>
+                        <li><a href="profile.html">Profil</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Ressources</h4>
+                    <ul>
+                        <li><a href="https://scikit-learn.org/" target="_blank">Scikit-learn</a></li>
+                        <li><a href="https://pandas.pydata.org/" target="_blank">Pandas</a></li>
+                        <li><a href="https://numpy.org/" target="_blank">NumPy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 STELLAR. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/codeEditor.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+</html>
