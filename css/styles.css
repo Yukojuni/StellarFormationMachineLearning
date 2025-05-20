@@ -479,11 +479,11 @@ nav {
 }
 
 .nova-says {
-  border-left: 4px solid var(--accent-gold);
+  border-left: 4px solid var(--accent-purple);
 }
 
 .orion-advises {
-  border-left: 4px solid var(--accent-purple);
+  border-left: 4px solid var(--accent-gold);
 }
 
 /* Styles pour les personnages Nova et ORION */
@@ -541,12 +541,12 @@ nav {
 }
 
 .nova-message h4 {
-  color: var(--accent-gold);
+  color: var(--accent-purple);
   text-shadow: var(--glow-gold);
 }
 
 .orion-message h4 {
-  color: var(--accent-purple);
+  color: var(--accent-gold);
   text-shadow: var(--glow-purple);
 }
 

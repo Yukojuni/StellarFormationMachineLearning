@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="nova-says">
-                        <div class="nova-icon"></div>
+                        <div class="nova-icon"><img src="assets/nova.png" alt="Arbre de décision" class="responsive-image"></div>
                         <div class="nova-message">
                             <h4>Nova dit :</h4>
                             <p>Notre vaisseau est endommagé et nous devons atterrir rapidement. ORION, peux-tu m'aider à trouver une planète sans tempête ?</p>
@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="orion-advises">
-                        <div class="orion-icon"></div>
+                        <div class="orion-icon"><img src="assets/orion.png" alt="Arbre de décision" class="responsive-image"></div>
                         <div class="orion-message">
                             <h4>ORION conseille :</h4>
                             <p>J'ai des données sur plusieurs planètes, mais je dois utiliser le Machine Learning pour prédire lesquelles sont sûres. Commençons par explorer ces données.</p>
@@ -70,7 +70,7 @@
                     </div>
 
                     <h3>Objectif</h3>
-                    <p>Aide Nova et ORION à trouver la planète la plus sûre en utilisant un Arbre de Décision et d'autres modèles de Machine Learning !</p>
+                    <p>Aide Nova et ORION à trouver la planète la plus sûre en utilisant un Arbre de Décision et d'autres modèles de Machine Learning !</p><BR>
 
                     <h3>Prérequis pour ce TD</h3>
                     <div class="prerequisites">
@@ -114,7 +114,7 @@
                 </ul>
 
                 <div class="orion-advises">
-                    <div class="orion-icon"></div>
+                    <div class="orion-icon"><img src="assets/orion.png" alt="Arbre de décision" class="responsive-image"></div>
                     <div class="orion-message">
                         <h4>ORION conseille :</h4>
                         <p>Commençons par importer les données et les explorer pour comprendre leur structure.</p>
@@ -233,7 +233,7 @@ df.head()</code></pre>
                 </ul>
 
                 <div class="nova-says">
-                    <div class="nova-icon"></div>
+                    <div class="nova-icon"><img src="assets/nova.png" alt="Arbre de décision" class="responsive-image"></div>
                     <div class="nova-message">
                         <h4>Nova dit :</h4>
                         <p>ORION, pourquoi devons-nous séparer les données ?</p>
@@ -241,7 +241,7 @@ df.head()</code></pre>
                 </div>
 
                 <div class="orion-advises">
-                    <div class="orion-icon"></div>
+                    <div class="orion-icon"><img src="assets/orion.png" alt="Arbre de décision" class="responsive-image"></div>
                     <div class="orion-message">
                         <h4>ORION conseille :</h4>
                         <p>Nous séparons les données en caractéristiques (ce que nous observons) et cible (ce que nous voulons prédire). Ensuite, nous divisons en jeu d'entraînement et jeu de test pour évaluer notre modèle.</p>
@@ -295,7 +295,7 @@ Xtrain, Xtest, Ytrain, Ytest = train_test_split(X_df, Y_df, test_size=0.2, strat
                 <p>ORION veut optimiser les performances du modèle.</p>
 
                 <div class="orion-advises">
-                    <div class="orion-icon"></div>
+                    <div class="orion-icon"><img src="assets/orion.png" alt="Arbre de décision" class="responsive-image"></div>
                     <div class="orion-message">
                         <h4>ORION conseille :</h4>
                         <p>La normalisation est cruciale car nos variables ont des échelles différentes. Par exemple, la température est en degrés tandis que l'humidité est en pourcentage.</p>
@@ -374,7 +374,7 @@ Xtest_new = np.concatenate((Xtest_scaled, Xtest_pca), axis=1)</code></pre>
                 </ul>
 
                 <div class="nova-says">
-                    <div class="nova-icon"></div>
+                    <div class="nova-icon"><img src="assets/nova.png" alt="Arbre de décision" class="responsive-image"></div>
                     <div class="nova-message">
                         <h4>Nova dit :</h4>
                         <p>Pourquoi tester plusieurs modèles ? N'y en a-t-il pas un qui est toujours meilleur ?</p>
@@ -382,7 +382,7 @@ Xtest_new = np.concatenate((Xtest_scaled, Xtest_pca), axis=1)</code></pre>
                 </div>
 
                 <div class="orion-advises">
-                    <div class="orion-icon"></div>
+                    <div class="orion-icon"><img src="assets/orion.png" alt="Arbre de décision" class="responsive-image"></div>
                     <div class="orion-message">
                         <h4>ORION conseille :</h4>
                         <p>Chaque modèle a ses forces et faiblesses. Certains sont meilleurs pour des données linéaires, d'autres pour des relations complexes. Il n'existe pas de modèle parfait pour tous les problèmes.</p>
@@ -570,7 +570,7 @@ if isinstance(best_model, DecisionTreeClassifier):
                 <p>ORION prédit les tempêtes sur toutes les planètes pour trouver où atterrir !</p>
 
                 <div class="nova-says">
-                    <div class="nova-icon"></div>
+                    <div class="nova-icon"><img src="assets/nova.png" alt="Arbre de décision" class="responsive-image"></div>
                     <div class="nova-message">
                         <h4>Nova dit :</h4>
                         <p>ORION, nous avons peu de temps ! Utilise le modèle pour me dire où atterrir !</p>
@@ -608,7 +608,7 @@ print("Planètes sûres pour l'atterrissage :", planetes_sures_list)</code></pre
                 </div>
 
                 <div class="orion-advises">
-                    <div class="orion-icon"></div>
+                    <div class="orion-icon"><img src="assets/orion.png" alt="Arbre de décision" class="responsive-image"></div>
                     <div class="orion-message">
                         <h4>ORION conseille :</h4>
                         <p>D'après notre modèle, je recommande d'atterrir sur Kepler-22b. C'est la planète la plus proche et elle présente des conditions météorologiques stables.</p>
