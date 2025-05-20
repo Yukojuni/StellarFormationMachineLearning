@@ -1,125 +1,109 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Définition des questions du quiz
+  // Définition des questions du quiz (intégration STELLAR)
   const quizQuestions = [
     {
-      question: "Qu'est-ce que le Machine Learning ?",
+      question: "Qu’est-ce que le Machine Learning selon Nova et ORION ?",
       options: [
-        "Un langage de programmation spécifique à l'intelligence artificielle",
-        "Une branche de l'IA qui permet aux ordinateurs d'apprendre à partir de données sans être explicitement programmés",
-        "Un type de matériel informatique spécialisé pour les calculs complexes",
-        "Un système d'exploitation conçu pour les superordinateurs",
+        "Un langage de programmation pour coder des intelligences artificielles",
+        "Une technique où les machines apprennent à partir de données sans instructions explicites",
+        "Une nouvelle forme de processeur quantique",
+        "Une méthode de cryptographie basée sur les neurones",
       ],
       correctAnswer: 1,
-      difficulty: "Facile",
+      difficulty: "Débutant",
       explanation:
-        "Le Machine Learning est une branche de l'intelligence artificielle qui permet aux systèmes d'apprendre et de s'améliorer à partir de l'expérience sans être explicitement programmés.",
+        "Le Machine Learning permet aux machines de détecter des patterns à partir de données, sans être programmées ligne par ligne.",
     },
     {
-      question: "Quelle est la différence entre l'apprentissage supervisé et non supervisé ?",
+      question: "Qu'est-ce qu'un modèle supervisé ?",
       options: [
-        "L'apprentissage supervisé nécessite un superviseur humain, l'apprentissage non supervisé est entièrement automatisé",
-        "L'apprentissage supervisé utilise des données étiquetées, l'apprentissage non supervisé utilise des données non étiquetées",
-        "L'apprentissage supervisé est plus rapide, l'apprentissage non supervisé est plus précis",
-        "L'apprentissage supervisé est utilisé pour la classification, l'apprentissage non supervisé uniquement pour la régression",
+        "Des données d'entraînement sans labels",
+        "Des données étiquetées (input + output) pour apprendre à prédire",
+        "Une supervision humaine constante",
+        "Des images de planètes",
       ],
       correctAnswer: 1,
-      difficulty: "Facile",
+      difficulty: "Débutant",
       explanation:
-        "Dans l'apprentissage supervisé, l'algorithme apprend à partir de données étiquetées (avec des réponses connues), tandis que dans l'apprentissage non supervisé, il doit trouver des structures dans des données non étiquetées.",
+        "En apprentissage supervisé, le modèle apprend avec des données étiquetées, comme dans votre TD STELLAR.",
     },
     {
-      question: "Qu'est-ce qu'un modèle de régression linéaire tente de faire ?",
+      question: "Pourquoi séparer les données d'entraînement des données de test ?",
       options: [
-        "Classer les données en catégories distinctes",
-        "Trouver des groupes naturels dans les données",
-        "Prédire une valeur continue basée sur des variables d'entrée",
-        "Réduire la dimensionnalité des données",
+        "Pour éviter de réentraîner le modèle",
+        "Pour simuler des conditions réelles sur des données inconnues",
+        "Pour augmenter la taille du dataset",
+        "Pour que le modèle soit plus rapide",
       ],
-      correctAnswer: 2,
-      difficulty: "Facile",
+      correctAnswer: 1,
+      difficulty: "Intermédiaire",
       explanation:
-        "La régression linéaire tente de modéliser la relation entre des variables en ajustant une équation linéaire aux données observées pour prédire une valeur continue.",
+        "Cela garantit que les performances reflètent la capacité du modèle à généraliser, comme dans vos étapes de validation avec train_test_split.",
     },
     {
-      question: "Quelle métrique n'est PAS utilisée pour évaluer un modèle de classification ?",
-      options: ["Précision (Accuracy)", "Rappel (Recall)", "F1-Score", "Erreur quadratique moyenne (MSE)"],
+      question: "Qu’est-ce que l’ACP (PCA) permet de faire ?",
+      options: [
+        "Ajouter des variables aléatoires",
+        "Réduire la dimensionnalité tout en conservant l'information principale",
+        "Supprimer les lignes manquantes du dataset",
+        "Corriger les prédictions incorrectes",
+      ],
+      correctAnswer: 1,
+      difficulty: "Intermédiaire",
+      explanation:
+        "Comme dans votre TD, l’Analyse en Composantes Principales permet de simplifier les données pour de meilleures performances.",
+    },
+    {
+      question: "Quel modèle a un entraînement séquentiel où chaque erreur est corrigée par le suivant ?",
+      options: [
+        "K-Nearest Neighbors",
+        "Régression linéaire",
+        "Bagging",
+        "Boosting",
+      ],
       correctAnswer: 3,
-      difficulty: "Intermédiaire",
+      difficulty: "Avancé",
       explanation:
-        "L'erreur quadratique moyenne (MSE) est principalement utilisée pour évaluer les modèles de régression, pas les modèles de classification.",
+        "Le Boosting améliore les performances globales en corrigeant les erreurs des prédictions précédentes.",
     },
     {
-      question: "Qu'est-ce que le surapprentissage (overfitting) ?",
+      question: "Pourquoi normaliser les données avant l’entraînement ?",
       options: [
-        "Quand un modèle apprend trop rapidement",
-        "Quand un modèle est trop complexe et capture le bruit dans les données d'entraînement",
-        "Quand un modèle est trop simple pour capturer la complexité des données",
-        "Quand un modèle utilise trop de ressources informatiques",
-      ],
-      correctAnswer: 1,
-      difficulty: "Intermédiaire",
-      explanation:
-        "Le surapprentissage se produit lorsqu'un modèle apprend les détails et le bruit des données d'entraînement au point qu'il affecte négativement la performance du modèle sur de nouvelles données.",
-    },
-    {
-      question: "Quelle technique est utilisée pour réduire la dimensionnalité des données ?",
-      options: ["K-means clustering", "Random Forest", "Analyse en Composantes Principales (PCA)", "Gradient Boosting"],
-      correctAnswer: 2,
-      difficulty: "Intermédiaire",
-      explanation:
-        "L'Analyse en Composantes Principales (PCA) est une technique statistique qui transforme les variables corrélées en un ensemble plus petit de variables non corrélées appelées composantes principales.",
-    },
-    {
-      question: "Dans un réseau de neurones, que fait la fonction d'activation ?",
-      options: [
-        "Elle détermine la vitesse d'apprentissage du réseau",
-        "Elle introduit la non-linéarité dans la sortie d'un neurone",
-        "Elle initialise les poids du réseau",
-        "Elle détermine le nombre de couches cachées",
+        "Pour supprimer les valeurs extrêmes",
+        "Pour que toutes les variables soient comparables en échelle",
+        "Pour convertir les données en texte",
+        "Pour alléger le modèle",
       ],
       correctAnswer: 1,
       difficulty: "Avancé",
       explanation:
-        "La fonction d'activation introduit des non-linéarités dans le réseau, permettant au modèle d'apprendre des relations complexes dans les données qui ne pourraient pas être capturées par un modèle linéaire.",
+        "La normalisation évite qu'une variable comme la température domine le modèle, ce que vous avez implémenté avec StandardScaler.",
     },
     {
-      question: "Qu'est-ce que la validation croisée k-fold ?",
+      question: "Quel modèle est à la fois simple, interprétable et utilisé dans votre mission ?",
       options: [
-        "Une technique pour initialiser les poids d'un réseau de neurones",
-        "Une méthode pour combiner plusieurs modèles",
-        "Une technique pour évaluer les performances d'un modèle en divisant les données en k sous-ensembles",
-        "Un algorithme de clustering qui divise les données en k groupes",
-      ],
-      correctAnswer: 2,
-      difficulty: "Avancé",
-      explanation:
-        "La validation croisée k-fold est une technique d'évaluation où les données sont divisées en k sous-ensembles. Le modèle est entraîné sur k-1 sous-ensembles et testé sur le sous-ensemble restant, ce processus étant répété k fois.",
-    },
-    {
-      question: "Quelle est la différence entre le bagging et le boosting ?",
-      options: [
-        "Le bagging utilise des arbres de décision, le boosting utilise des réseaux de neurones",
-        "Le bagging entraîne des modèles en parallèle, le boosting les entraîne séquentiellement",
-        "Le bagging est supervisé, le boosting est non supervisé",
-        "Le bagging est utilisé pour la classification, le boosting pour la régression",
+        "Réseau de Neurones",
+        "Arbre de Décision (CART/ID3)",
+        "Random Forest",
+        "Régression logistique",
       ],
       correctAnswer: 1,
       difficulty: "Expert",
       explanation:
-        "Le bagging (Bootstrap Aggregating) entraîne plusieurs modèles en parallèle sur différents sous-ensembles de données, tandis que le boosting entraîne des modèles séquentiellement, chaque nouveau modèle tentant de corriger les erreurs des précédents.",
+        "L’arbre de décision a été utilisé dans vos prédictions de tempêtes pour sa lisibilité. Bonus : il se visualise facilement !",
     },
     {
-      question: "Qu'est-ce que la descente de gradient stochastique (SGD) ?",
+      question: "Que fait la descente de gradient stochastique (SGD) ?",
       options: [
-        "Un algorithme de clustering",
-        "Une méthode d'optimisation qui met à jour les paramètres en utilisant un seul exemple à la fois",
-        "Une technique de régularisation pour éviter le surapprentissage",
-        "Un type de réseau de neurones spécialisé dans la vision par ordinateur",
+        "Crée des clusters",
+        "Optimise les poids en traitant un échantillon à la fois",
+        "Visualise les données",
+        "Multiplie les couches du modèle",
       ],
       correctAnswer: 1,
       difficulty: "Expert",
       explanation:
-        "La descente de gradient stochastique est une méthode d'optimisation qui met à jour les paramètres d'un modèle en utilisant un seul exemple (ou un petit lot) à chaque itération, contrairement à la descente de gradient classique qui utilise l'ensemble des données.",
+        "Elle permet des mises à jour rapides et régulières des poids dans les modèles complexes comme les réseaux de neurones.",
     },
   ]
 
@@ -152,14 +136,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Afficher une question
   function showQuestion(index) {
-    // Mettre à jour l'indicateur de progression
     currentQuestionSpan.textContent = index + 1
     quizProgress.style.width = `${((index + 1) / quizQuestions.length) * 100}%`
 
-    // Récupérer la question actuelle
     const question = quizQuestions[index]
 
-    // Créer le HTML pour la question
     let questionHTML = `
             <div class="question-card">
                 <div class="question-header">
@@ -170,7 +151,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="options-container">
         `
 
-    // Ajouter les options
     question.options.forEach((option, optionIndex) => {
       const isSelected = userAnswers[index] === optionIndex
       questionHTML += `
@@ -186,26 +166,21 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `
 
-    // Insérer le HTML dans le conteneur
     questionContainer.innerHTML = questionHTML
 
-    // Ajouter des écouteurs d'événements aux options
     const optionInputs = questionContainer.querySelectorAll('input[type="radio"]')
     optionInputs.forEach((input) => {
       input.addEventListener("change", function () {
         userAnswers[index] = Number.parseInt(this.value)
 
-        // Mettre à jour la classe selected
         const options = questionContainer.querySelectorAll(".option")
         options.forEach((opt) => opt.classList.remove("selected"))
         this.closest(".option").classList.add("selected")
 
-        // Activer le bouton suivant
         nextQuestionBtn.disabled = false
       })
     })
 
-    // Mettre à jour les boutons de navigation
     prevQuestionBtn.disabled = index === 0
 
     if (index === quizQuestions.length - 1) {
@@ -216,11 +191,10 @@ document.addEventListener("DOMContentLoaded", () => {
       submitQuizBtn.classList.add("hidden")
     }
 
-    // Désactiver le bouton suivant si aucune réponse n'est sélectionnée
     nextQuestionBtn.disabled = userAnswers[index] === null
   }
 
-  // Navigation entre les questions
+  // Navigation
   prevQuestionBtn.addEventListener("click", () => {
     if (currentQuestionIndex > 0) {
       currentQuestionIndex--
@@ -235,9 +209,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   })
 
-  // Soumettre le quiz
+  // Soumettre
   submitQuizBtn.addEventListener("click", () => {
-    // Calculer le score
     let score = 0
     userAnswers.forEach((answer, index) => {
       if (answer === quizQuestions[index].correctAnswer) {
@@ -245,22 +218,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     })
 
-    // Afficher le score
     finalScoreSpan.textContent = score
 
-    // Définir le message en fonction du score
     if (score <= 3) {
-      scoreMessage.textContent =
-        "Vous avez encore beaucoup à apprendre sur le Machine Learning. Continuez vos efforts !"
+      scoreMessage.textContent = "Nova a besoin d’un recalibrage. La mission STELLAR est en suspens."
     } else if (score <= 6) {
-      scoreMessage.textContent = "Vous avez des connaissances de base en Machine Learning. Continuez à explorer !"
-    } else if (score <= 9) {
-      scoreMessage.textContent = "Très bon score ! Vous avez une bonne compréhension du Machine Learning."
+      scoreMessage.textContent = "Bonne trajectoire, ORION vous accompagne dans vos prochaines explorations."
     } else {
-      scoreMessage.textContent = "Score parfait ! Vous êtes un expert en Machine Learning !"
+      scoreMessage.textContent = "Excellente compréhension ! Vous êtes prêts à transmettre vos savoirs comme formateurs du futur"
     }
 
-    // Générer les détails des résultats
     let detailsHTML = ""
     quizQuestions.forEach((question, index) => {
       const userAnswer = userAnswers[index]
@@ -284,18 +251,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     resultsDetails.innerHTML = detailsHTML
 
-    // Afficher les résultats
     quizContainer.classList.add("hidden")
     resultsContainer.classList.remove("hidden")
   })
 
-  // Recommencer le quiz
+  // Rejouer
   retryQuizBtn.addEventListener("click", () => {
-    // Réinitialiser les variables d'état
     currentQuestionIndex = 0
     userAnswers = Array(quizQuestions.length).fill(null)
-
-    // Réinitialiser l'interface
     resultsContainer.classList.add("hidden")
     quizIntro.classList.remove("hidden")
   })
