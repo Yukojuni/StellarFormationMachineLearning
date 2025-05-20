@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QCM Machine Learning | STELLAR</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <header>
+      <nav>
+          <div class="logo">STELLAR</div>
+          <ul class="nav-links">
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="td1.html">TD1</a></li>
+              <li><a href="qcm.html" class="active">QCM</a></li>
+              <li><a href="resources.html">Ressources</a></li>
+              <li><a href="profile.html">Profil</a></li>
+          </ul>
+      </nav>
+  </header>
+
+  <main class="qcm-container">
+      <section class="qcm-header">
+          <div class="container">
+              <h1>Quiz Machine Learning</h1>
+              <p class="subtitle">Testez vos connaissances en Machine Learning avec ce quiz interactif</p>
+          </div>
+      </section>
+
+      <section class="qcm-content">
+          <div class="container">
+              <div class="qcm-intro">
+                  <div class="nova-orion-container">
+                      <div class="nova-character">
+                          <div class="nova-image"></div>
+                          <p>Nova</p>
+                      </div>
+                      <div class="orion-character">
+                          <div class="orion-image"></div>
+                          <p>ORION</p>
+                      </div>
+                  </div>
+                  <div class="qcm-instructions">
+                      <h2>Instructions</h2>
+                      <p>Ce quiz contient 10 questions de difficulté croissante sur le Machine Learning. Répondez à chaque question et validez pour voir votre score final.</p>
+                      <p>Bonne chance !</p>
+                      <button id="start-quiz" class="cta-button">Commencer le quiz</button>
+                  </div>
+              </div>
+
+              <div id="quiz-container" class="hidden">
+                  <div class="progress-container">
+                      <div class="progress-bar">
+                          <div class="progress" id="quiz-progress"></div>
+                      </div>
+                      <div class="progress-text">Question <span id="current-question">1</span>/10</div>
+                  </div>
+
+                  <div id="question-container">
+                      <!-- Les questions seront générées dynamiquement ici -->
+                  </div>
+
+                  <div class="quiz-navigation">
+                      <button id="prev-question" class="prev-button" disabled>Question précédente</button>
+                      <button id="next-question" class="next-button">Question suivante</button>
+                      <button id="submit-quiz" class="submit-quiz hidden">Terminer le quiz</button>
+                  </div>
+              </div>
+
+              <div id="results-container" class="hidden">
+                  <h2>Résultats</h2>
+                  <div class="results-score">
+                      <div class="score-circle">
+                          <span id="final-score">0</span>/10
+                      </div>
+                      <p id="score-message">Message basé sur le score</p>
+                  </div>
+
+                  <div id="results-details">
+                      <!-- Les détails des résultats seront générés dynamiquement ici -->
+                  </div>
+
+                  <div class="results-actions">
+                      <button id="retry-quiz" class="secondary-button">Recommencer le quiz</button>
+                      <a href="td1.html" class="cta-button">Retour au TD</a>
+                  </div>
+              </div>
+          </div>
+      </section>
+  </main>
+
+  <footer>
+      <div class="container">
+          <div class="footer-content">
+              <div class="footer-logo">STELLAR</div>
+              <div class="footer-links">
+                  <h4>Navigation</h4>
+                  <ul>
+                      <li><a href="index.html">Accueil</a></li>
+                      <li><a href="td1.html">TD1</a></li>
+                      <li><a href="resources.html">Ressources</a></li>
+                      <li><a href="qcm.html">QCM</a></li>
+                      <li><a href="profile.html">Profil</a></li>
+                  </ul>
+              </div>
+              <div class="footer-links">
+                  <h4>Ressources</h4>
+                  <ul>
+                      <li><a href="https://scikit-learn.org/" target="_blank">Scikit-learn</a></li>
+                      <li><a href="https://pandas.pydata.org/" target="_blank">Pandas</a></li>
+                      <li><a href="https://numpy.org/" target="_blank">NumPy</a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="copyright">
+              <p>&copy; 2025 STELLAR. Tous droits réservés.</p>
+          </div>
+      </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/qcm.js"></script>
+</body>
+</html>

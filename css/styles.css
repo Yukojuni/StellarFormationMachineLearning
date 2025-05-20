@@ -459,13 +459,63 @@ nav {
 
 .nova-says,
 .orion-advises {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
   border-radius: var(--border-radius);
   padding: 1.5rem;
   margin: 2rem 0;
   display: flex;
   gap: 1.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nova-says:hover,
+.orion-advises:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.nova-says {
+  border-left: 4px solid var(--accent-gold);
+}
+
+.orion-advises {
+  border-left: 4px solid var(--accent-purple);
+}
+
+/* Styles pour les personnages Nova et ORION */
+.nova-icon,
+.orion-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.nova-says:hover .nova-icon,
+.orion-advises:hover .orion-icon {
+  transform: rotate(10deg);
+}
+
+.nova-icon {
+  background-color: var(--accent-gold);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="25" fill="%23ffffff"/><rect x="25" y="35" width="50" height="40" rx="10" fill="%23ffffff"/><circle cx="40" cy="35" r="5" fill="%230f172a"/><circle cx="60" cy="35" r="5" fill="%230f172a"/><path d="M 40 50 Q 50 60 60 50" stroke="%230f172a" stroke-width="2" fill="none"/><rect x="35" y="65" width="30" height="10" rx="5" fill="%23f8c406"/><circle cx="50" cy="15" r="5" fill="%23f8c406"/></svg>');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.orion-icon {
+  background-color: var(--accent-purple);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="25" y="25" width="50" height="50" rx="10" fill="%23ffffff"/><circle cx="40" cy="40" r="5" fill="%238b5cf6"/><circle cx="60" cy="40" r="5" fill="%238b5cf6"/><rect x="35" y="55" width="30" height="5" fill="%238b5cf6"/><path d="M 20 30 L 10 20 M 20 50 L 5 50 M 20 70 L 10 80 M 80 30 L 90 20 M 80 50 L 95 50 M 80 70 L 90 80" stroke="%238b5cf6" stroke-width="2"/></svg>');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .nova-icon,
@@ -474,32 +524,30 @@ nav {
   height: 60px;
   border-radius: 50%;
   flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
 }
 
-.nova-icon {
-  background-color: var(--accent-gold);
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="40" r="20" fill="%230f172a"/><rect x="30" y="60" width="40" height="20" fill="%230f172a"/></svg>');
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+.nova-says:hover .nova-icon,
+.orion-advises:hover .orion-icon {
+  transform: rotate(10deg);
 }
 
-.orion-icon {
-  background-color: var(--accent-purple);
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="30" y="30" width="40" height="40" fill="%230f172a"/><circle cx="40" cy="40" r="5" fill="%23f8c406"/><circle cx="60" cy="40" r="5" fill="%23f8c406"/></svg>');
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.nova-message,
-.orion-message {
-  flex: 1;
-}
-
-.nova-says h4,
-.orion-advises h4 {
+.nova-message h4,
+.orion-message h4 {
+  font-family: var(--font-futuristic);
   margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.nova-message h4 {
+  color: var(--accent-gold);
+  text-shadow: var(--glow-gold);
+}
+
+.orion-message h4 {
+  color: var(--accent-purple);
+  text-shadow: var(--glow-purple);
 }
 
 .prerequisites {
@@ -1260,4 +1308,250 @@ footer {
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--accent-purple) var(--bg-primary);
+}
+
+/* Styles pour la page QCM */
+.qcm-container {
+  flex: 1;
+}
+
+.qcm-header {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.qcm-content {
+  padding: 2rem 0;
+}
+
+.qcm-intro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.nova-orion-container {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+}
+
+.nova-character,
+.orion-character {
+  text-align: center;
+}
+
+.nova-image,
+.orion-image {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.nova-image:hover,
+.orion-image:hover {
+  transform: translateY(-10px);
+}
+
+.nova-image {
+  background-color: var(--accent-gold);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="25" fill="%23ffffff"/><rect x="25" y="35" width="50" height="40" rx="10" fill="%23ffffff"/><circle cx="40" cy="35" r="5" fill="%230f172a"/><circle cx="60" cy="35" r="5" fill="%230f172a"/><path d="M 40 50 Q 50 60 60 50" stroke="%230f172a" stroke-width="2" fill="none"/><rect x="35" y="65" width="30" height="10" rx="5" fill="%23f8c406"/><circle cx="50" cy="15" r="5" fill="%23f8c406"/></svg>');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.orion-image {
+  background-color: var(--accent-purple);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="25" y="25" width="50" height="50" rx="10" fill="%23ffffff"/><circle cx="40" cy="40" r="5" fill="%238b5cf6"/><circle cx="60" cy="40" r="5" fill="%238b5cf6"/><path d="M 35 60 Q 50 70 65 60" stroke="%238b5cf6" stroke-width="2" fill="none"/><path d="M 20 30 L 10 20 M 20 50 L 5 50 M 20 70 L 10 80 M 80 30 L 90 20 M 80 50 L 95 50 M 80 70 L 90 80" stroke="%238b5cf6" stroke-width="2"/></svg>');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.qcm-instructions {
+  max-width: 600px;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.question-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.question-number {
+  font-weight: 600;
+  color: var(--accent-gold);
+}
+
+.question-difficulty {
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.question-difficulty.facile {
+  background-color: rgba(163, 230, 53, 0.2);
+  color: var(--accent-lime);
+}
+
+.question-difficulty.intermédiaire {
+  background-color: rgba(248, 196, 6, 0.2);
+  color: var(--accent-gold);
+}
+
+.question-difficulty.avancé,
+.question-difficulty.expert {
+  background-color: rgba(139, 92, 246, 0.2);
+  color: var(--accent-purple);
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease;
+}
+
+.option:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.option.selected {
+  background-color: rgba(139, 92, 246, 0.2);
+  border: 1px solid var(--accent-purple);
+}
+
+.option input[type="radio"] {
+  margin-top: 0.25rem;
+}
+
+.quiz-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.results-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.score-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  margin-bottom: 1rem;
+  box-shadow: 0 0 20px rgba(248, 196, 6, 0.3);
+}
+
+#score-message {
+  text-align: center;
+  font-size: 1.25rem;
+  max-width: 600px;
+}
+
+.result-item {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.result-item.correct {
+  border-left: 4px solid var(--accent-lime);
+}
+
+.result-item.incorrect {
+  border-left: 4px solid var(--accent-error);
+}
+
+.result-question {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.result-number {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.result-text {
+  flex: 1;
+  font-weight: 600;
+}
+
+.result-icon {
+  font-weight: 700;
+}
+
+.result-item.correct .result-icon {
+  color: var(--accent-lime);
+}
+
+.result-item.incorrect .result-icon {
+  color: var(--accent-error);
+}
+
+.result-details {
+  padding-left: 3rem;
+}
+
+.results-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.hidden {
+  display: none;
 }
